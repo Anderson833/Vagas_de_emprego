@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt"
+xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title>Perfil de Usuario</title>
+</head>
+<body>
+      <h1>Cadastrar Usuario</h1>
+    
+    <form th:action"@{/Usuario/adicionar}" th:object="${usuario}"
+      method="post">
+      <table>
+          
+          <tr>
+           <td>Nome:</td>
+           <td>
+           <input type="text" th:field="${usuario.nome}"/>
+           </td>
+         </tr>
+           <tr>
+           <td>Cpf:</td>
+           <td>
+           <input type="text" th:field="${usuario.cpf}"/>
+           </td>
+         </tr>
+          <tr>
+           <td>Email:</td>
+           <td>
+           <input type="email" th:field="${usuario.email}"/>
+           </td>
+         </tr>
+          <tr>
+           <td>Senha:</td>
+           <td>
+           <input type="password" th:field="${usuario.senha}"/>
+           </td>
+         </tr>
+          <tr>
+           <td>Telefone:</td>
+           <td>
+           <input type="text" th:field="${usuario.telefone}"/>
+           </td>
+         </tr>
+          <tr>
+           <td>Cidade:</td>
+           <td>
+           <input type="text" th:field="${usuario.cidade}"/>
+           </td>
+         </tr>
+          <tr>
+           <td>Sexo:</td>
+           <td>
+           <input type="radio" th:field="${usuario.sexo}"
+                     th:value="M"/>Masculino
+            <input type="radio" th:field="${usuario.sexo}"
+                     th:value="F"/>Feminino         
+           </td>
+         </tr>
+          <tr>
+           <td>Arquivo:</td>
+           <td>
+           <input type="file" th:field="${usuario.curriculorPDF}"/>
+           </td>
+         </tr>
+      </table>
+         
+         <input type="submit" value="Cadastrar">
+           <input type="submit" value="Cancelar"
+          formaction="/" formmethod="get"/>
+           
+     </form>
+
+
+
+</body>
+</html>

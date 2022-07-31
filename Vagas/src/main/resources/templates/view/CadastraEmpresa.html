@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt"
+xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title>Cadastra Empresa</title>
+</head>
+<body>
+        <!-- Descrição da página de empresa -->
+      <h1>Informe os dados da Empresa</h1>
+     
+        <!-- O formulário realizar uma ação com a url de inicio e uma especifica na Empresa controller -->
+        <!-- O th:object="${}" pegar o objeto da classe empresa e o th:field="${} atribui os dados para o objeto "   -->
+    <form th:action"@{Empresa/salvar}" th:object="${empresa}"    
+      method="post">
+      <table>
+          
+          <tr>
+           <td>Nome:</td>
+           <td>
+           <input type="text" th:field="${empresa.nome}"/>
+           </td>
+         </tr>
+           <tr>
+           <td>Cnpj:</td>
+           <td>
+           <input type="text" th:field="${empresa.cnpj}"/>
+           </td>
+         </tr>
+          <tr>
+           <td>Cidade:</td>
+           <td>
+           <input type="text" th:field="${empresa.cidade}"/>
+           </td>
+         </tr>
+          <tr>
+           <td>endereço:</td>
+           <td>
+           <input type="text" th:field="${empresa.endereco}"/>
+           </td>
+         </tr>
+          <tr>
+           <td>Telefone:</td>
+           <td>
+           <input type="text" th:field="${empresa.telefone}"/>
+           </td>
+         </tr>
+          <tr>
+           <td>Email:</td>
+           <td>
+           <input type="text" th:field="${empresa.email}"/>
+           </td>
+         </tr>
+          <tr>
+           <td>Senha:</td>
+           <td>
+           <input type="password" th:field="${empresa.senha}"/>
+           </td>
+         </tr>
+          
+      </table>
+      
+        <input type="submit" value="Cadastrar"/>
+     </form>
+
+
+
+</body>
+</html>

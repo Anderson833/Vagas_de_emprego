@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt"
+xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title>Vagas de emprego</title>
+</head>
+<body>
+       <!-- O título da página de cadastro de vagas   -->
+      <h1>Cadastrar vagas </h1>
+      <!-- A ação para enviar os dados para o controller de vagas para passar para o método post e adiconar no banco  -->
+       <!-- O th:object="${vagas}"  pegar o objeto da classe Vagas no controller já instanciado -->
+    <form th:action"@{Vagas/cadastro}" th:object="${vagas}"
+      method="post">
+      <!-- A tag table construir uma tabela -->
+      <table>
+          <!-- a tag tr formar coluna  -->
+          <tr>
+           <!-- a tag td formar uma linha  -->
+           <td>título:</td>
+           <td>
+              <!-- O th:field="${}" atribui um dado para o objeto vagas -->
+              <!-- tag input e de entrada   -->
+           <input type="text" th:field="${vagas.titulo}"/>
+           </td>
+         </tr>
+           <tr>
+           <td>Cidade:</td>
+           <td>
+            <!-- O th:field="${}" atribui um dado para o objeto vagas -->
+           <input type="text" th:field="${vagas.cidade}"/>
+           </td>
+         </tr>
+          <tr>
+           <td>Estado:</td>
+           <td>
+            <!-- O th:field="${}" atribui um dado para o objeto vagas -->
+           <input type="text" th:field="${vagas.estado}"/>
+           </td>
+         </tr>
+          <tr>
+           <td>Área:</td>
+           <td>
+            <!-- O th:field="${}" atribui um dado para o objeto vagas -->
+           <input type="text" th:field="${vagas.area}"/>
+           </td>
+         </tr>
+          <tr>
+           <td>Descrição:</td>
+           <td>
+            <!-- O th:field="${}" atribui um dado para o objeto vagas -->
+           <input type="text" th:field="${vagas.descricao}"/>
+           </td>
+         </tr>
+          <tr>
+           <td>Status:</td>
+           <td>
+            <!-- O th:field="${}" atribui um dado para o objeto vagas -->
+           <input type="text" th:field="${vagas.status}"/>
+           </td>
+         </tr>
+         
+      </table>
+                <!-- O tipo de entrada submit enviar os dados preenchido no formulário -->
+        <input type="submit" value="Cadastrar"
+     </form>
+
+
+
+</body>
+</html>
