@@ -9,14 +9,27 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 </head>
 <body>
       <h1>Cadastrar Usuario</h1>
-    
-    <form th:action"@{/Usuario/adicionar}" th:object="${usuario}"
-      method="post">
+<div th:if="${msgSucesso} != null">
+ <b  th:text="${msgSucesso}" style="color: blue;"></b>
+  <br/><br/>
+ </div>
+ 
+     
+     <!-- Esse formulário  enviar os dados para  o metodo post com uma url inicial do controle e uma url especifica do método post para salva -->
+    <form th:action="@{/Usuario/salvar}" th:object="${usuario}" method="post"
+       enctype="multipart/form-data"> 
+        <!-- O th:object="${}" pegar um objeto da classe Usuario no método de iniciaCadastro -->
+          
+          
+          
+            <input type="hidden"    th:field="${usuario.id}"/>
+         
       <table>
           
           <tr>
            <td>Nome:</td>
            <td>
+                 <!-- O th:field="{}" atribui inserir os dados no objeto  -->
            <input type="text" th:field="${usuario.nome}"/>
            </td>
          </tr>
@@ -62,14 +75,16 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
           <tr>
            <td>Arquivo:</td>
            <td>
-           <input type="file" th:field="${usuario.curriculorPDF}"/>
+            
+           <input type="file"  th:name="file"/>
+           
            </td>
          </tr>
       </table>
          
-         <input type="submit" value="Cadastrar">
-           <input type="submit" value="Cancelar"
-          formaction="/" formmethod="get"/>
+         <input type="submit" th:value="${usuario.id}==0 ? Cadastrar : adicionar"/>
+	           <input type="submit" value="Cancelar"
+	          formaction="/" formmethod="get"/>
            
      </form>
 

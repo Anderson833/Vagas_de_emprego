@@ -8,11 +8,17 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <title>Vagas de emprego</title>
 </head>
 <body>
+
+<div th:if="${msgSucesso} != null">
+ <b  th:text="${msgSucesso}" style="color: blue;"></b>
+  <br/><br/>
+ </div>
        <!-- O título da página de cadastro de vagas   -->
       <h1>Cadastrar vagas </h1>
       <!-- A ação para enviar os dados para o controller de vagas para passar para o método post e adiconar no banco  -->
+     
        <!-- O th:object="${vagas}"  pegar o objeto da classe Vagas no controller já instanciado -->
-    <form th:action"@{Vagas/cadastro}" th:object="${vagas}"
+    <form th:action="@{/Vagas/salvar}" th:object="${vagas}"
       method="post">
       <!-- A tag table construir uma tabela -->
       <table>
@@ -64,7 +70,9 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
          
       </table>
                 <!-- O tipo de entrada submit enviar os dados preenchido no formulário -->
-        <input type="submit" value="Cadastrar"
+        <input type="submit" value="Cadastrar"/>
+         <input type="submit" value="Cancelar"
+	          formaction="/" formmethod="get"/>
      </form>
 
 

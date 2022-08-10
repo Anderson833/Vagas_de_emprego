@@ -1,10 +1,12 @@
 package br.edu.ifrn.vagas.Model;
 
+import java.util.Objects;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-  // Uma tabela de vagas
+  // Uma tabela de vagas será gerada no banco de dados com esse método @Entity
 @Entity
 public class Vagas {
 
@@ -59,6 +61,21 @@ public class Vagas {
 	}
 	public String getStatus() {
 		return status;
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Vagas other = (Vagas) obj;
+		return id == other.id;
 	}
 	public void setStatus(String status) {
 		this.status = status;

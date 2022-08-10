@@ -13,8 +13,16 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
        <!-- Página de inicio com os dois links de opções   -->
     <h1>Bem vindo ao sistema de vagas de emprego </h1>
     
-    <a href=" /Usuario/cadastro">Cadastrar Usuario</a>
-    <a href="/Empresa/cadastro">Cadastrar Empresa</a>
+    <a href=" /Usuario/cadastro">Cadastrar Usuario</a><br>
+    
+    <a href="/Empresa/cadastro">Cadastrar Empresa</a><br>
+     <a href=" /Vagas/cadastro">Cadastrar Vagas</a><br>
+     <a href=" /Vagas/listaDeVagas">Lista Vagas</a><br>
+    <a href="/Lista/Listar">Lista Usuario</a><br>
+    
+       <form th:action="@{/logout}" method="post">
+         <input type="submit" value="Sair"/>
+       </form>
 
 </body>
 </html>

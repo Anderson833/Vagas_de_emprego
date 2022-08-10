@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt"
+xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title>Perfil de Usuario</title>
+</head>
+<body>
+      <h1>Listar Usuario</h1>
+<div th:if="${msgSucesso} != null">
+ <b  th:text="${msgSucesso}" style="color: blue;"></b>
+  <br/><br/>
+ </div>
+ 
+     
+     <!-- Esse formulário  enviar os dados com uma url lista inicial do controle,uma url para o método especifico de listar -->
+    <form th:action="@{/Lista/listagem}"  method="get"> 
+        
+      <table>
+          
+          <tr>
+           <td>Nome:</td>
+           <td>    
+           <input type="text" th:name="nome"/>
+           </td>
+         </tr>
+           <tr>
+           <td>Email:</td>
+           <td>
+           <input type="email" th:name="email"/>
+           </td>
+         </tr>
+          <tr>
+           
+           <td colspan="2">
+           <input type="checkbox" th:name="listarTodosUsuarios"
+              th:value="true"/>
+              Listando todos usuários
+           </td>
+         </tr>
+         
+      </table>
+         
+         <input type="submit" value="listar"/>
+           <input type="submit" value="Cancelar"
+          formaction="/" formmethod="get"/>
+           
+     </form>
+         <div  th:if="${not #lists.isEmpty(listaUsuarios)}">
+         <table>
+          <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th th:if="${listaUsuarios}!= null"></th>
+           <th>Opções</th>
+          </tr>
+            <tr th:each="u: ${listaUsuarios}">
+               <td th:text="${u.nome}"></td>
+               <td th:text="${u.email}"></td>
+               <td th:if="${listarTodosUsuarios}"></td>
+                 <td>
+                <a th:href="'/Usuario/adicionar/' + ${u.id}">editar</a>
+                
+                 <a th:href="'/Usuario/excluir/' + ${u.id}" th:onclick="if(!confirm('Tem certeza que quer deletar usuário?'))return false">deletar
+                 
+                 </a>
+                
+              </td>
+            </tr>
+            
+         </table>
+         </div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt"
+xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title>Listagem das vagas</title>
+</head>
+<body>
+      <h1>Listar Vagas</h1>
+<div th:if="${msgSucesso} != null">
+ <b  th:text="${msgSucesso}" style="color: blue;"></b>
+  <br/><br/>
+ </div>
+ 
+     
+     <!-- Esse formulário  enviar os dados com uma url lista inicial do controle,uma url para o método especifico de listar -->
+    <form th:action="@{/Vagas/listaVgs}"  method="get"> 
+        
+      <table>
+          
+          <tr>
+           <td>Estado:</td>
+           <td>    
+           <input type="text" th:name="estado"/>
+           </td>
+         </tr>
+           <tr>
+           <td>Cidade:</td>
+           <td>
+           <input type="text" th:name="cidade"/>
+           </td>
+         </tr>
+         <tr>
+           <td>Área:</td>
+           <td>
+           <input type="text" th:name="area"/>
+           </td>
+          <tr>
+           
+           <td colspan="2">
+           <input type="checkbox" th:name="listarTodasVagas"
+              th:value="true"/>
+              Listar todas vagas
+           </td>
+         </tr>
+         
+      </table>
+         
+         <input type="submit" value="listar"/>
+           <input type="submit" value="Voltar"
+          formaction="/" formmethod="get"/>
+           
+     </form>
+         <div  th:if="${not #lists.isEmpty(listaVagas)}">
+         <table>
+          <tr>
+            <th>Estado</th>
+            <th>Cidade</th>
+            <th>Área</th>
+            <th th:if="${listaVagas}!= null"></th>
+           <th>Opções</th>
+          </tr>
+            <tr th:each="v: ${listaVagas}">
+               <td th:text="${v.estado}"></td>
+               <td th:text="${v.cidade}"></td>
+               <td th:text="${v.area}"></td>
+               <td th:if="${listarTodasVagas}"></td>
+                 <td>
+                <a th:href="'/Vagas/editarVaga/' + ${v.id}">editar</a>
+                
+                 <a th:href="'/Vagas/excluirVaga/' + ${v.id}" th:onclick="if(!confirm('Deseja excluir essa vaga?'))return false">Exluir
+                 
+                 </a>
+                
+              </td>
+            </tr>
+            
+         </table>
+         </div>
+</body>
+</html>

@@ -2,11 +2,14 @@ package br.edu.ifrn.vagas.Model;
 
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 // essa classe será para criar os atributos e métodos para usuario que deseja se inscrever na vaga
 
@@ -17,6 +20,18 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	// @Column é para os dados não se inseridos nulos
+	
+	@OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
+	private Arquivo foto;
+	
+	public Arquivo getFoto() {
+		return foto;
+	}
+
+	public void setFoto(Arquivo foto) {
+		this.foto = foto;
+	}
+
 	@Column (nullable = false)
 	private String nome;
 	
@@ -39,8 +54,9 @@ public class Usuario {
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(cidade, cpf, curriculorPDF, email, id, nome, senha, sexo, telefone);
+		return Objects.hash(id);
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -50,12 +66,10 @@ public class Usuario {
 		if (getClass() != obj.getClass())
 			return false;
 		Usuario other = (Usuario) obj;
-		return Objects.equals(cidade, other.cidade) && Objects.equals(cpf, other.cpf)
-				&& Objects.equals(curriculorPDF, other.curriculorPDF) && Objects.equals(email, other.email)
-				&& id == other.id && Objects.equals(nome, other.nome) && Objects.equals(senha, other.senha)
-				&& Objects.equals(sexo, other.sexo) && Objects.equals(telefone, other.telefone);
+		return id == other.id;
 	}
-	@Column (nullable = false)
+
+	//@Column (nullable = false)
 	private String curriculorPDF;
 	
 	//Métodos getters e setters 
@@ -111,7 +125,7 @@ public class Usuario {
 	public String getCurriculorPDF() {
 		return curriculorPDF;
 	}
-	public void setCorriculoPDF(String curriculorPDF) {
+	public void setCurriculoPDF(String curriculorPDF) {
 		this.curriculorPDF = curriculorPDF;
 	}
 	
