@@ -15,15 +15,30 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class Usuario {
-    
+     
+	// atributo para registrar um tipo de  perfil 
+	public static final String usuario_comum = "comum";
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private int id;
 	// @Column é para os dados não se inseridos nulos
 	
 	@OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
 	private Arquivo foto;
 	
+
+	@Column(nullable = false)
+	private String perfil=usuario_comum;
+	
+	public String getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(String perfil) {
+		this.perfil = perfil;
+	}
+
 	public Arquivo getFoto() {
 		return foto;
 	}
@@ -74,10 +89,10 @@ public class Usuario {
 	
 	//Métodos getters e setters 
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getNome() {

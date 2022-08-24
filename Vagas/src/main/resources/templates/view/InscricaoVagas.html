@@ -4,19 +4,27 @@ xmlns="http://www.w3.org/1999/xhtml"
 xmlns:th="http://www.thymeleaf.org" 
 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-<style>
- body{
-	background-color: aquamarine;
-}
-</style>
 <meta charset="UTF-8">
 <title>Listagem das vagas</title>
- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-      <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+<!-- jQuery Autocomplete -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
+  <script>
+       $(function (){
+          $("#vagas").autocomplete({
+	        source:"/Usuario/autocompleteVagas",
+	        minlength:1,
+	         select: function(event, it){
+		        this.value=it.item.label;
+		        $("#idvagas").val(it.item.value);
+		        return false;
+             }
+           })
+         });
+ </script>
 
-      <!--Let browser know website is optimized for mobile-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
       <h1>Listar Vagas</h1>
@@ -27,40 +35,37 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
  
      
      <!-- Esse formulário  enviar os dados com uma url lista inicial do controle,uma url para o método especifico de listar -->
-    <form th:action="@{/Vagas/listaVgs}"  method="get"> 
+    <form th:action="@{/Usuario/autocompleteVagas}" th:object="${usuario}" method="get"> 
              
       <table>
           
         
           <tr>
-           <td>Estado:</td>
+           <td>Nome:</td>
            <td>    
-           <input type="text" th:name="estado"/>
+           <input type="text" th:field="${usuario.nome}"/>
            </td>
          </tr>
            <tr>
-           <td>Cidade:</td>
+           <td>Email:</td>
            <td>
-           <input type="text" th:name="cidade"/>
+            <input type="email" th:field="${usuario.email}"/>
            </td>
          </tr>
          <tr>
-           <td>Área:</td>
+           <td>Senha:</td>
            <td>
-           <input type="text" th:name="area"/>
+           <input type="password" th:field="${usuario.senha}"/>
            </td>
           <tr>
-           
-           <td colspan="2">
-           <input type="checkbox" th:name="listarTodasVagas"
-              th:value="true"/>
-              Listar todas vagas
-           </td>
-         </tr>
-         
+          
+           <td> Vagas: </td>
+            <td >
+              <input id="vagas" th:field="${usuario.vagas.titulo}"/>
+              <input id="idvagas" type="hidden" th:field="${usuario.vagas.id}"/>
       </table>
          
-         <input type="submit" value="listar"/>
+         <input type="submit" value="Inscrever"/>
            <input type="submit" value="Voltar"
           formaction="/" formmethod="get"/>
            
@@ -101,9 +106,9 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
                <td th:if="${listarTodasVagas}"></td>
                  <td>
                   
-                <a th:href="'/Vagas/editarVaga/' + ${v.id}">editar</a>
+                <a th:href="'/Vagas/editarVaga/' + ${v.id}">Inscrever-se</a>
                 
-                 <a th:href="'/Vagas/excluir/' + ${v.id}" th:onclick="if(!confirm('Deseja excluir essa vaga?'))return false">Exluir
+                 <a th:href="'/Vagas/excluir/' + ${v.id}" th:onclick="if(!confirm('Deseja excluir essa vaga?'))return false">cancelar
                  
                  </a>
                 
@@ -112,7 +117,5 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
             
          </table>
          </div>
-          <!--JavaScript at end of body for optimized loading-->
-      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 </body>
 </html>

@@ -17,7 +17,7 @@ import br.edu.ifrn.vagas.Model.Usuario;
 import br.edu.ifrn.vagas.Repositorios.UsuarioRepository;
 
 @Controller
-@RequestMapping("/Lista")
+@RequestMapping("/Lista")  // url inicial do controle de lista de usuários
 public class ListaUsuario {
 
 	
@@ -31,7 +31,6 @@ public class ListaUsuario {
 		return "view/ListaUsuario";
 	}
 	 // método para lista os usuarios
-
 	@GetMapping("/listagem")                  //passando os dados como parametros para lista os dados
 		public String listarUsuario(@RequestParam(name="nome" ,required = false) String nome,
 				                     @RequestParam(name="email", required = false) String email,
@@ -49,7 +48,7 @@ public class ListaUsuario {
 	    return "view/ListaUsuario";
 			
 	 }
-		
+		//método para adicionar usuário
 	@GetMapping("/adicionar/{id}")
 	 public String edicao(@PathVariable("id") Integer idUsu,
 			               ModelMap model,RedirectAttributes at) {
@@ -64,7 +63,7 @@ public class ListaUsuario {
 
 	 }
 
-	 
+	 // método para deleta usuário
 	 @GetMapping("/deletar/{id}")
 	 public String deletar(@PathVariable("id") Integer idusuario , RedirectAttributes at) {
 	            

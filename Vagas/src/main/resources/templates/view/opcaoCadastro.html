@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt"
+xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title>Opções de cadastros</title>
+</head>
+<body>
+
+
+       <!-- Página de inicio com os dois links de opções   -->
+       <h1>O que deseja cadastrar </h1>
+    
+    <a href="/Usuario/cadastro">Usuário</a>
+           ou uma</b>
+    <a href="/Empresa/cadastro">Empresa</a>
+      <form th:action="@{/logout}" method="post">
+         <input type="submit" value="Voltar"/>
+       </form>
+
+</body>
+</html>

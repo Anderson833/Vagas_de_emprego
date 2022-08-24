@@ -1,25 +1,52 @@
 package br.edu.ifrn.vagas.Model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.springframework.lang.Nullable;
+
 @Entity
 public class Empresa {
 
+	 public static final String admin="admin";
+	
 	//atributos
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	@Column(nullable = false)
 	private String nome;
+	
+	@Column(nullable = false)
 	private String cnpj;
+	
+	@Column(nullable = false)
 	private String cidade;
+	
+	@Column(nullable = false)
 	private String endereco;
+	
+	@Column(nullable = false)
 	private String telefone;
+	
+	@Column(nullable = false)
 	private String email;
+	
+	@Column(nullable = false)
 	private String senha;
 	
+	@Column(nullable = false)
+	public String PerfilEmpresa=admin;
+	
+	public String getPerfilEmpresa() {
+		return PerfilEmpresa;
+	}
+	public void setPerfilEmpresa(String perfilEmpresa) {
+		PerfilEmpresa = perfilEmpresa;
+	}
 	//Métodos setters e getters
 	public long getId() {
 		return id;

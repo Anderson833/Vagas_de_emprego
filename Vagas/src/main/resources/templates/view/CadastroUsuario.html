@@ -5,16 +5,24 @@ xmlns:th="http://www.thymeleaf.org"
 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 <meta charset="UTF-8">
-<title>Perfil de Usuario</title>
+<title>Perfil de Usuário</title>
+ <style>
+ body{
+	background-color:aqua;
+}
+  </style> 
+<!--  link da plataformar booststrap importante css nessa página -->
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
 </head>
 <body>
-      <h1>Cadastrar Usuario</h1>
+     <div  class="container text-center">
+      <h1>Editar Perfil</h1>
 <div th:if="${msgSucesso} != null">
  <b  th:text="${msgSucesso}" style="color: blue;"></b>
-  <br/><br/>
  </div>
  
-     
+  
      <!-- Esse formulário  enviar os dados para  o metodo post com uma url inicial do controle e uma url especifica do método post para salva -->
     <form th:action="@{/Usuario/salvar}" th:object="${usuario}" method="post"
        enctype="multipart/form-data"> 
@@ -24,8 +32,9 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
           
             <input type="hidden"    th:field="${usuario.id}"/>
          
-      <table>
-          
+      
+         
+          <div class="col">
           <tr>
            <td>Nome:</td>
            <td>
@@ -33,36 +42,57 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
            <input type="text" th:field="${usuario.nome}"/>
            </td>
          </tr>
+          </div>
+          </br>
+          <div class="col">
            <tr>
            <td>Cpf:</td>
            <td>
            <input type="text" th:field="${usuario.cpf}"/>
            </td>
          </tr>
+          </div>
+          </br>
+          <div class="col">
           <tr>
            <td>Email:</td>
            <td>
            <input type="email" th:field="${usuario.email}"/>
            </td>
          </tr>
+          </div>
+          </br>
+         
+          <div class="col">
           <tr>
            <td>Senha:</td>
            <td>
            <input type="password" th:field="${usuario.senha}"/>
            </td>
          </tr>
+          </div>
+          </br>
+          <div class="col">
           <tr>
            <td>Telefone:</td>
            <td>
            <input type="text" th:field="${usuario.telefone}"/>
            </td>
          </tr>
+          </div>
+          </br>
+          <div class="col">
           <tr>
            <td>Cidade:</td>
            <td>
            <input type="text" th:field="${usuario.cidade}"/>
            </td>
          </tr>
+          </div>
+         
+          </br>
+         
+          <div class="col">
           <tr>
            <td>Sexo:</td>
            <td>
@@ -72,6 +102,9 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
                      th:value="F"/>Feminino         
            </td>
          </tr>
+          </div>
+          </br>
+          <div class="col">
           <tr>
            <td>Arquivo:</td>
            <td>
@@ -80,15 +113,19 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
            
            </td>
          </tr>
-      </table>
+          </div>
          
+          
+            <input type="hidden"    th:field="${usuario.perfil}"/>
+      
+         </br>
          <input type="submit" th:value="${usuario.id}==0 ? Cadastrar : adicionar"/>
 	           <input type="submit" value="Cancelar"
 	          formaction="/" formmethod="get"/>
            
      </form>
-
-
-
+  
+ </div>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>
 </html>

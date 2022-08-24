@@ -22,10 +22,13 @@ public class Arquivo {
 	  private byte [] dados;
 	  
 	  public Arquivo(String Nomearquivo,String tipoArquivo,byte []dados) { 
-		  super();
 		  this.Nomearquivo=Nomearquivo;
 		  this.tipoArquivo=tipoArquivo;
 		  this.dados=dados;
+	  }
+	  
+	  public Arquivo() {
+		  
 	  }
 
 	public long getId() {

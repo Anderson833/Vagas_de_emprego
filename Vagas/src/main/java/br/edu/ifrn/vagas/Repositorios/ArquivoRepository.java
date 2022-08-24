@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.edu.ifrn.vagas.Model.Arquivo;
 
 @Repository
-public interface ArquivoRepository extends JpaRepository<Arquivo,Integer>{
+public interface ArquivoRepository extends JpaRepository<Arquivo,Long>{
 
 }

@@ -45,7 +45,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
          
          <input type="submit" value="listar"/>
            <input type="submit" value="Cancelar"
-          formaction="/" formmethod="get"/>
+          formaction="/Usuario/opcao" formmethod="get"/>
            
      </form>
          <div  th:if="${not #lists.isEmpty(listaUsuarios)}">
@@ -57,8 +57,15 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
            <th>Opções</th>
           </tr>
             <tr th:each="u: ${listaUsuarios}">
+              <td>
+          <!--   <img th:if="${u.foto != null}"
+                  th:src="@{/download/}  +  ${u.foto.id} +  '?salvar=true'"
+                  Style="max-height: 128px;"/>-->
+             
+             </td>
                <td th:text="${u.nome}"></td>
                <td th:text="${u.email}"></td>
+               
                <td th:if="${listarTodosUsuarios}"></td>
                  <td>
                 <a th:href="'/Usuario/adicionar/' + ${u.id}">editar</a>

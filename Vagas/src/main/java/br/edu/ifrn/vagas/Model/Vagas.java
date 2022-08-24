@@ -2,6 +2,7 @@ package br.edu.ifrn.vagas.Model;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,20 +14,31 @@ public class Vagas {
 	 //os atributos 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long  id;
+	private Integer  id;
+	@Column(nullable = false)
 	private String titulo;
+	
+	@Column(nullable = false)
 	private String cidade;
+	
+	@Column(nullable = false)
 	private String estado;
+	
+	@Column(nullable = false)
 	private String area;
+	
+	@Column(nullable = false)
 	private String descricao;
+	
+	@Column(nullable = false)
 	private String status;
 	
 	//Método getters  e setters
 	
-	public long getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getTitulo() {

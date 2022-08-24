@@ -6,20 +6,26 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 <meta charset="UTF-8">
 <title>Cadastra Empresa</title>
+<style>
+  body{
+	background-color:#40E0D0;
+	
+}
+</style>
 </head>
 <body>
 
- <h1>Cadastrar Empresa</h1>
 <div th:if="${msgSucesso} != null">
  <b  th:text="${msgSucesso}" style="color: blue;"></b>
   <br/><br/>
  </div>
+    
         <!-- Descrição da página de empresa -->
       <h1>Informe os dados da Empresa</h1>
      
         <!-- O formulário realizar uma ação com a url de inicio e uma especifica na Empresa controller -->
         <!-- O th:object="${}" pegar o objeto da classe empresa e o th:field="${} atribui os dados para o objeto "   -->
-    <form th:action="@{Empresa/salvar}" th:object="${empresa}"    
+    <form th:action="@{/Empresa/salvar}" th:object="${empresa}"    
       method="post">
       <table>
           
@@ -65,12 +71,12 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
            <input type="password" th:field="${empresa.senha}"/>
            </td>
          </tr>
-          
+          <input type="hidden"    th:field="${empresa.PerfilEmpresa}"/>
       </table>
       
         <input type="submit" value="Cadastrar"/>
           <input type="submit" value="Cancelar"
-	          formaction="/" formmethod="get"/>
+	          formaction="/Empresa/opcao" formmethod="get"/>
      </form>
 
 
