@@ -7,9 +7,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.GenericGenerator;
 
 // essa classe será para criar os atributos e métodos para usuario que deseja se inscrever na vaga
 
@@ -20,7 +21,8 @@ public class Usuario {
 	public static final String usuario_comum = "comum";
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(generator = "increment")
+	@GenericGenerator(name = "increment", strategy = "increment")
 	private int id;
 	// @Column é para os dados não se inseridos nulos
 	

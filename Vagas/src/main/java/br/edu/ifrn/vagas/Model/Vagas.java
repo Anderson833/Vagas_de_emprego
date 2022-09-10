@@ -5,15 +5,17 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import org.hibernate.annotations.GenericGenerator;
   // Uma tabela de vagas será gerada no banco de dados com esse método @Entity
 @Entity
 public class Vagas {
 
 	 //os atributos 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(generator = "increment")
+	@GenericGenerator(name = "increment", strategy = "increment")
 	private Integer  id;
 	@Column(nullable = false)
 	private String titulo;

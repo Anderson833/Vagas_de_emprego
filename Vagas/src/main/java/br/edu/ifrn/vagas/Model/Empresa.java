@@ -3,10 +3,9 @@ package br.edu.ifrn.vagas.Model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.springframework.lang.Nullable;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class Empresa {
@@ -14,8 +13,9 @@ public class Empresa {
 	 public static final String admin="admin";
 	
 	//atributos
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	 @Id
+	 @GeneratedValue(generator = "increment")
+	 @GenericGenerator(name = "increment", strategy = "increment")
 	private long id;
 	@Column(nullable = false)
 	private String nome;
